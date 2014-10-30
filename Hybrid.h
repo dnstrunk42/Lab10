@@ -65,8 +65,8 @@ void Hybrid<T>::enqueue(T* item)
 	sldl->add(item);*/
 
 
-   DoubleNode<T>* item = sldl->addDN(item);
-   q->enqueue(item);
+   DoubleNode<T>* node = sldl->addDN(item);
+   q->enqueue(node);
 
 
 }
@@ -78,9 +78,13 @@ T* Hybrid<T>::dequeue()
 	sldl->remove(item->getKey());*/
 
 
-   DoubleNode<T>* item = q->dequeue();
-   sldl->remove((item->getItem())->getKey());
+   DoubleNode<T>* node = q->dequeue();
 
+   T* item = node->getItem();
+
+   sldl->remove(item->getKey());
+
+ 
 
    return item;
 }

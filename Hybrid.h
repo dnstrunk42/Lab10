@@ -47,8 +47,15 @@ Hybrid<T>::~Hybrid()
 template < class T >
 bool Hybrid<T>::isEmpty()
 {
-	q->isEmpty();
-	sldl->isEmpty();
+	if (q->isEmpty() || sldl->isEmpty())
+        {
+	   return true;
+	}
+	else
+	{
+	   return false;
+	}
+	
 }
 
 template < class T >
@@ -56,6 +63,12 @@ void Hybrid<T>::enqueue(T* item)
 {
 	q->enqueue(item);
 	sldl->add(item);
+
+/*
+   T* temp = sldl->addDN(item);
+   q->enqueue(temp);
+*/
+
 }
 
 template < class T >
@@ -63,12 +76,13 @@ T* Hybrid<T>::dequeue()
 {
 	T* item = q->dequeue();
 	sldl->remove(item->getKey());
-}
 
-template < class T >
-ListDoublyLinkedIterator<T>* Hybrid<T>::iterator()
-{
-	ListDoublyLinkedIterator<T>* iter = sldl->iterator();
+/*
+   T* item = q->dequeue();
+   sldl->remove(item->getKey());
+*/
+
+   return item;
 }
 
 

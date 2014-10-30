@@ -65,6 +65,12 @@ T* Hybrid<T>::dequeue()
 	sldl->remove(item->getKey());
 }
 
+template < class T >
+ListDoublyLinkedIterator<T>* Hybrid<T>::iterator()
+{
+	ListDoublyLinkedIterator<T>* iter = sldl->iterator();
+}
+
 
 
 
